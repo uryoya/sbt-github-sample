@@ -15,6 +15,7 @@ lazy val hello = (project in file("."))
       commitReleaseVersion,
       tagRelease,
       pushChanges, // githubRelease を実行する前に変更をリモートに送信する必要がある
+      releaseStepCommand("assembly"),
       releaseStepCommand("githubRelease"), // リリースの作成
       setNextVersion,
       commitNextVersion,
@@ -25,6 +26,6 @@ lazy val hello = (project in file("."))
     ghreleaseRepoName := "sbt-github-sample",
     ghreleaseNotes    := { _ => "" },
     ghreleaseAssets   := Seq[File](
-      // pass
+      new java.io.File("target/" + (assemblyJarName in assembly).value)
     )
   )
