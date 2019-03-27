@@ -25,4 +25,7 @@ lazy val hello = (project in file("."))
     ghreleaseRepoOrg  := "uryoya",
     ghreleaseRepoName := "sbt-github-sample",
     ghreleaseNotes    := { _ => "" },
+    ghreleaseAssets   := Seq[File](
+      // pass
+    )
   )
