@@ -14,11 +14,11 @@ lazy val hello = (project in file("."))
       setReleaseVersion,
       commitReleaseVersion,
       tagRelease,
-      pushChanges,
-      releaseStepCommand("githubRelease"),
+      pushChanges, // githubRelease を実行する前に変更をリモートに送信する必要がある
+      releaseStepCommand("githubRelease"), // リリースの作成
       setNextVersion,
       commitNextVersion,
-      pushChanges
+      pushChanges // 再度送信
     ),
 
     ghreleaseRepoOrg  := "uryoya",
