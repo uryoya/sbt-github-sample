@@ -26,6 +26,7 @@ lazy val hello = (project in file("."))
     ghreleaseRepoName := "sbt-github-sample",
     ghreleaseNotes    := { _ => "" },
     ghreleaseAssets   := Seq[File](
-      new java.io.File("target/" + (assemblyJarName in assembly).value)
+      new java.io.File(
+        (assemblyOutputPath in assembly).value + "/" + (assemblyJarName in assembly).value)
     )
   )
