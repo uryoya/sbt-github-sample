@@ -15,6 +15,7 @@ lazy val hello = (project in file("."))
       setReleaseVersion,
       commitReleaseVersion,
       tagRelease,
+      pushChanges,
       releaseStepCommand("githubRelease"),
       setNextVersion,
       commitNextVersion,
