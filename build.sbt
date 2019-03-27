@@ -6,5 +6,5 @@ lazy val hello = (project in file("."))
   .settings(
     name := "Hello",
     ghreleaseRepoOrg := "uryoya",
-    ghreleaseRepoName := "scala-example",
+    ghreleaseRepoName := "sbt-github-sample",
   )
