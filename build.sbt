@@ -5,6 +5,7 @@ ThisBuild / version      := "0.1.2"
 lazy val hello = (project in file("."))
   .settings(
     name := "Hello",
-    ghreleaseRepoOrg := "uryoya",
+    ghreleaseRepoOrg  := "uryoya",
     ghreleaseRepoName := "sbt-github-sample",
+    ghreleaseNotes    := { _ => "" },
   )
