@@ -1,7 +1,10 @@
 import ReleaseTransformations._
+import example.sbt.ReleaseUtil
 
 ThisBuild / scalaVersion := "2.12.7"
 ThisBuild / organization := "com.example"
+
+lazy val gitOrigin = settingKey[Option[ReleaseUtil.Origin]]("git remote repository")
 
 lazy val hello = (project in file("."))
   .settings(
@@ -22,8 +25,9 @@ lazy val hello = (project in file("."))
       pushChanges // 再度送信
     ),
 
-    ghreleaseRepoOrg  := "uryoya",
-    ghreleaseRepoName := "sbt-github-sample",
+    gitOrigin         := ReleaseUtil.gitOrigin(baseDirectory.value),
+    ghreleaseRepoOrg  := gitOrigin.value.map(_.organization).getOrElse(organization.value),
+    ghreleaseRepoName := gitOrigin.value.map(_.name).getOrElse(name.value),
     ghreleaseNotes    := { _ => "" },
     ghreleaseAssets   := Seq[File](
       new File((assemblyOutputPath in assembly).value.getPath)
